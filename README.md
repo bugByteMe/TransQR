@@ -6,6 +6,31 @@ This project provides three scripts:
 - `decoder.py`: decodes frames from an image folder, webcam, or live screen capture, then restores the folder.
 - `viewer.py`: shows QR frame images in the terminal one by one.
 
+## When This Repo Is Useful
+
+Use this when you need data from a remote machine but cannot download files directly (no SCP, no shared drive, no USB), and you can only see the remote monitor. In that case, run `encoder.py` + `viewer.py` on the remote/source machine to display QR frames on-screen, then run `decoder.py` on your local/target machine to scan those frames from a webcam or screen capture and rebuild the original folder.
+
+Quick monitor-only workflow:
+
+1) On the source machine (the one that has the files):
+
+```bash
+python encoder.py --input-folder ./my_folder --out-dir ./qr_frames
+python viewer.py --folder ./qr_frames --delay 0.25 --loop
+```
+
+2) On the target machine (the one that should receive files):
+
+```bash
+python decoder.py --camera 0 --output ./restored
+```
+
+If the target machine can directly capture the display instead of using a webcam:
+
+```bash
+python decoder.py --screen --output ./restored
+```
+
 ## Install
 
 ```bash
