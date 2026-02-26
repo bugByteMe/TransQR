@@ -1,0 +1,5 @@
+qrcode[pil]>=7.4
+opencv-python>=4.8
+mss>=9.0
+PyQRCode>=1.2.1
+zxing-cpp>=3.0.0
